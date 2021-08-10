@@ -1,0 +1,20 @@
+$beige: #f1faee;
+
+// CSS-Variablen
+:root {
+  --imperial-red: hsla(355, 78%, 56%, 1);
+  --honeydew: hsla(105, 55%, 96%, 1);
+  --powder-blue: hsla(182, 43%, 76%, 1);
+  --celadon-blue: hsla(203, 39%, 44%, 1);
+  --prussian-blue: hsla(215, 50%, 23%, 1);
+  --light-gray: hsl(235, 15%, 70%);
+  --purple: hsl(230, 33%, 21%);
+  --background-color: var(--purple);
+  --text-color: var(--light-gray);
+  --link-color: var(--imperial-red);
+  --active-link-color: var(--celadon-blue);
+}
+
+$content-width: 50rem;
+
+$mobile-max-width: 600px;

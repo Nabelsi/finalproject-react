@@ -1,0 +1,151 @@
+@import 'normalize';
+@import 'variables';
+@import 'header';
+@import 'footer';
+@import 'layout';
+@import 'links';
+@import 'colorBoxes';
+@import 'input';
+
+.mood__image {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.mood__buttons {
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: 10rem;
+  }
+}
+
+.pioneers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+}
+
+.pioneer {
+  h3 {
+    font-size: 2.5rem;
+
+    a {
+      color: #f25f4c;
+
+      &:hover,
+      &:focus {
+        color: #e53170;
+      }
+    }
+  }
+
+  em {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    background-image: linear-gradient(90deg, yellow, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.pioneer__biography {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.gallery {
+  width: 100%;
+  max-width: 40rem;
+}
+
+.gallery__big-image img {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnails {
+  margin: 1rem 0;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+}
+
+.thumbnails__button {
+  margin: 0;
+  border: none;
+  padding: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(0.9);
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover img,
+  &:focus img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+  }
+}
+
+.thumbnails__button--active img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #fffffe;
+  font-family: sans-serif;
+}
+
+button {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  font-size: 1.2rem;
+  background: orange;
+  color: #0f0e17;
+  border: none;
+  box-shadow: none;
+  margin: 0.5rem;
+  font-weight: bold;
+
+  &[disabled] {
+    background: #a7a9be;
+  }
+}
+
+.emoji {
+  font-size: var(--size, 2rem);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 1rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+a {
+  color: #f25f4c;
+
+  &:hover,
+  &:focus {
+    color: #e53170;
+  }
+}

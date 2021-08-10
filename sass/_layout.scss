@@ -1,0 +1,12 @@
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+}
+
+.content-width {
+  max-width: $content-width;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

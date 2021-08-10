@@ -1,0 +1,15 @@
+.color-boxes {
+  &__wrapper {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  }
+
+  &__box {
+    background-color: hsl(var(--hue), var(--saturation), 50%);
+
+    div {
+      padding-bottom: 100%;
+    }
+  }
+}
