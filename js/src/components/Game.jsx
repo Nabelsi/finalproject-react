@@ -29,7 +29,7 @@ export default function Game({
         <span>&nbsp;&nbsp;{tag}</span>
         <span>&nbsp;&nbsp;</span>
 
-        <button onClick={() => createForm(id)}>erwartung</button>
+        <button onClick={() => createExpectationForm(id)}>erwartung</button>
         <button>result</button>
       </div>
       <hr></hr>
@@ -37,8 +37,8 @@ export default function Game({
   );
 }
 
-function createForm(id) {
-  let id_player_selected=0;
+function createExpectationForm(id) {
+  let id_player_selected = 0;
   let erwartungSection = document.createElement('form');
   erwartungSection.style.backgroundColor = 'black';
   erwartungSection.innerHTML = 'ADD Erwartung';
@@ -67,9 +67,10 @@ function createForm(id) {
 
     erwartungSection.appendChild(selectPlayer);
 
-    selectPlayer.addEventListener('change', (e) =>
-      id_player_selected=e.currentTarget.value
-          );
+    selectPlayer.addEventListener(
+      'change',
+      (e) => (id_player_selected = e.currentTarget.value)
+    );
   }
   loadPlayersList();
   //  Ende of Select für Einen Spiler
@@ -82,39 +83,50 @@ function createForm(id) {
 
   erwartungSection.appendChild(input_gast_goals);
 
+  const btnCancelErwartung = document.createElement('button');
+  btnCancelErwartung.innerHTML = 'Abrechen';
+  erwartungSection.appendChild(btnCancelErwartung);
 
-  const btnAddErwartung = document.createElement("button");
-  btnAddErwartung.innerHTML = " + ";
+  btnCancelErwartung.addEventListener('click', () =>
+    document.getElementById(id).removeChild(erwartungSection)
+  );
+  const btnAddErwartung = document.createElement('button');
+  btnAddErwartung.innerHTML = ' + ';
   erwartungSection.appendChild(btnAddErwartung);
-  btnAddErwartung.addEventListener("click",function(e){
+  btnAddErwartung.addEventListener('click', function (e) {
     e.preventDefault();
-    if(id_player_selected > 0 && input_home_goals.value && input_gast_goals.value){
-       const newErwartung ={
-      game_id:id,
-      player_id:id_player_selected,
-      goals_home_team : input_home_goals.value,
-      goals_gast_team : input_gast_goals.value
-
+    if (
+      id_player_selected > 0 &&
+      input_home_goals.value &&
+      input_gast_goals.value
+    ) {
+      const newErwartung = {
+        game_id: id,
+        player_id: id_player_selected,
+        goals_home_team: input_home_goals.value,
+        goals_gast_team: input_gast_goals.value,
+      };
+      add_erwartungToDB(newErwartung);
     }
-    add_erwartungToDB(newErwartung);
 
-    }
-   
     document.getElementById(id).removeChild(erwartungSection);
   });
-
 }
 
-
-function add_erwartungToDB({game_id, player_id,goals_home_team,goals_gast_team}) {
+function add_erwartungToDB({
+  game_id,
+  player_id,
+  goals_home_team,
+  goals_gast_team,
+}) {
   const data = {
     game_id,
     player_id,
     goals_home_team,
     goals_gast_team,
-    punkt:0
+    punkt: 0,
   };
-  console.log(data)
+  console.log(data);
   fetch('http://localhost/server2/addexpectaion.php', {
     method: 'POST',
     body: JSON.stringify(data),
